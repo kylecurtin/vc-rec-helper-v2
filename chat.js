@@ -115,7 +115,7 @@ function renderUserMessage(state, msg) {
 
 function renderAssistantMessage(state, msg) {
   const wrap = el('div', { class: 'msg msg-assistant', 'data-msg-id': msg.id });
-  const meta = el('div', { class: 'msg-meta' }, 'STRATA');
+  const meta = el('div', { class: 'msg-meta' }, 'SLR · RF');
   if (msg.model) meta.append(' · ', el('span', { style: 'color: var(--forest);' }, modelShort(msg.model)));
   wrap.append(meta);
 
@@ -215,7 +215,7 @@ export function startStreamingMessage(modelId) {
   $('#chat-empty').style.display = 'none';
 
   _streamingMsgEl = el('div', { class: 'msg msg-assistant' });
-  const meta = el('div', { class: 'msg-meta' }, 'STRATA');
+  const meta = el('div', { class: 'msg-meta' }, 'SLR · RF');
   if (modelId) meta.append(' · ', el('span', { style: 'color: var(--forest);' }, modelShort(modelId)));
   _streamingMsgEl.append(meta);
 

@@ -112,6 +112,28 @@ function wireTopbar() {
     e.target.value = '';
   });
   $('#btn-reset').addEventListener('click', resetEverything);
+
+  // Overflow dropdown menu
+  const overflow = $('#topbar-overflow');
+  const trigger = $('#btn-overflow');
+  const closeOverflow = () => {
+    overflow.classList.remove('is-open');
+    trigger.setAttribute('aria-expanded', 'false');
+  };
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = overflow.classList.toggle('is-open');
+    trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  overflow.querySelectorAll('.overflow-item').forEach(b => {
+    b.addEventListener('click', closeOverflow);
+  });
+  document.addEventListener('click', (e) => {
+    if (!overflow.contains(e.target)) closeOverflow();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeOverflow();
+  });
 }
 
 function wireModeToggle() {
@@ -535,7 +557,7 @@ function loadSampleEngagement() {
 
 function exportJSON() {
   const blob = new Blob([JSON.stringify({
-    _meta: { app: 'STRATA Workspace', version: 2, exportedAt: new Date().toISOString() },
+    _meta: { app: 'SLR · Responsible Finance Workspace', version: 2, exportedAt: new Date().toISOString() },
     profile: state.profile,
     recommendations: state.recommendations,
     chat: state.chat,

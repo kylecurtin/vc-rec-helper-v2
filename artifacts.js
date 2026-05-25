@@ -114,15 +114,15 @@ export function renderCompanyPanel(state, onChange) {
   const empty = !p.company && !p.sector && !p.businessModel;
 
   if (empty && !editing) {
-    panel.append(el('div', { class: 'empty-pane' },
-      el('div', { class: 'empty-pane-rule' }),
-      el('h3', {}, 'No company profile yet'),
-      el('p', {}, 'Describe a target in the chat panel, attach a CIM, or click below to enter it manually.'),
-      el('div', { class: 'empty-pane-rule', style: 'margin: 24px auto;' }),
-      el('button', {
-        class: 'btn-primary',
-        onclick: () => { state.ui.companyEditing = true; onChange(); },
-      }, 'Enter Manually'),
+    panel.append(el('div', { class: 'empty-pane empty-pane-quiet' },
+      el('p', {},
+        'The company profile will appear here once Claude has read your target. ',
+        el('button', {
+          class: 'inline-link',
+          onclick: () => { state.ui.companyEditing = true; onChange(); },
+        }, 'Or enter it manually'),
+        '.',
+      ),
     ));
     return;
   }
@@ -853,7 +853,7 @@ function rphead(num, title, rail) {
 }
 function rpfoot(label) {
   return el('div', { class: 'report-foot' },
-    el('span', {}, 'STRATA · Value Creation Analysis'),
+    el('span', {}, 'SLR Consulting · Responsible Finance · Value Creation Analysis'),
     el('span', {}, label),
   );
 }
@@ -862,8 +862,8 @@ function reportCover(state) {
   const p = state.profile;
   return el('div', { class: 'report-page cover-page' },
     el('div', { class: 'report-cover-top' },
-      el('span', { class: 'report-cover-mark' }, 'STRATA'),
-      el('span', { class: 'report-cover-eyebrow' }, 'Sustainability Value Creation Studio'),
+      el('span', { class: 'report-cover-mark' }, 'SLR'),
+      el('span', { class: 'report-cover-eyebrow' }, 'Responsible Finance · Value Creation Workspace'),
     ),
     el('div', { class: 'report-cover-mid' },
       el('div', { class: 'report-cover-kicker' }, 'Value Creation Analysis · Sustainability Practice'),
