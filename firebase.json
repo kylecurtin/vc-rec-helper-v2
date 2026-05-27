@@ -1,0 +1,26 @@
+{
+  "hosting": {
+    "site": "slr-responsible-finance",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      ".firebase/**",
+      ".git/**",
+      ".gitignore",
+      ".claude/**",
+      ".DS_Store",
+      "**/.DS_Store",
+      "README.md",
+      "**/node_modules/**"
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(js|css|html)",
+        "headers": [
+          { "key": "Cache-Control", "value": "no-cache" }
+        ]
+      }
+    ]
+  }
+}
